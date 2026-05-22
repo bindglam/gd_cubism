@@ -80,7 +80,7 @@ ShaderMaterial* InternalCubismRendererResource::request_shader_material(const Cs
     GDCubismShader e = GD_CUBISM_SHADER_NORM_MIX;
     if (model->GetDrawableMaskCounts()[index] == 0)
     {
-        switch (model->GetDrawableBlendMode(index))
+        switch (model->GetDrawableBlendModeType(index).GetColorBlendType())
         {
         case CubismRenderer::CubismBlendMode_Additive:
             e = GD_CUBISM_SHADER_NORM_ADD;
@@ -98,7 +98,7 @@ ShaderMaterial* InternalCubismRendererResource::request_shader_material(const Cs
     }
     else if (model->GetDrawableInvertedMask(index) == false)
     {
-        switch (model->GetDrawableBlendMode(index))
+        switch (model->GetDrawableBlendModeType(index).GetColorBlendType())
         {
         case CubismRenderer::CubismBlendMode_Additive:
             e = GD_CUBISM_SHADER_MASK_ADD;
@@ -116,7 +116,7 @@ ShaderMaterial* InternalCubismRendererResource::request_shader_material(const Cs
     }
     else
     {
-        switch (model->GetDrawableBlendMode(index))
+        switch (model->GetDrawableBlendModeType(index).GetColorBlendType())
         {
         case CubismRenderer::CubismBlendMode_Additive:
             e = GD_CUBISM_SHADER_MASK_ADD_INV;
